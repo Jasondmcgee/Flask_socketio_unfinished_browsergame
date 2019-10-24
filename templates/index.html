@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            #gameScreen{
+                border: 15px solid black;
+            }
+            img {
+            display: none;
+            }
+            img.player {
+            opacity: 0;
+            }
+    </style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <img id="img_bush" class='player' src="{{url_for('static', filename='assets/bush.jpg')}}">
+    <img id="img_hero" src="{{url_for('static', filename='assets/rosey.PNG')}}">
+    <img id="img_lava" src="{{url_for('static', filename='assets/lava.jpg')}}">
+    <img id="img_bullet" src="{{url_for('static', filename='assets/bullet.jpg')}}">
+    <h1>Connect the Sockets</h1>
+    <canvas id="gameScreen" width='800' height='600'></canvas>
+
+    <ul id='messages'>
+    </ul>
+    <input type="text" id="myMessage">
+    <button id="sendbutton" onclick=messageButton()>Send</button>
+
+    {% assets "main_js" %}
+    <script type='text/javascript' src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+</body>
+</html>
